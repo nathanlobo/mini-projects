@@ -48,6 +48,7 @@ def add_space_before_capital_letters(folder_path):
         print(f'Renamed: {old_file} -> {new_file}')
 
 def add_space_before_character(folder_path, char):
+    char = input("Enter character:")
     for filename in os.listdir(folder_path):
         new_name = filename.replace(char, ' ' + char)
         old_file = os.path.join(folder_path, filename)
@@ -55,18 +56,20 @@ def add_space_before_character(folder_path, char):
         os.rename(old_file, new_file)
         print(f'Renamed: {old_file} -> {new_file}')
 
-char = '-'  # Character to add space before
-
 # rename_files(folder_path)
 # add_space_before_capital_letters(folder_path)
 # add_space_before_character(folder_path, char)
+print("Hi there! ", end="")
 
-tempVal = input("Hi there, These are the tasks I can do in a given folder\nEnter 1 to Find & Replace text in a file name of all files\nEnter 2 to Add space before capital letters in a file name of all files\nEnter 3 to Add space before a particular character in a file name of all files\n\tType here:")
-
-folder_path = input(r"Enter folder path:")
-if tempVal == '1':
-    rename_files(folder_path)
-elif tempVal == '2':
-    add_space_before_capital_letters(folder_path)
-elif tempVal == '3':
-    add_space_before_character(folder_path, char)
+while True:
+    userinput = input("These are the tasks I can do in a given folder\nEnter '1' to Find & Replace text in a file name of all files\nEnter '2' to Add space before capital letters in a file name of all files\nEnter '3' to Add space before a particular character in a file name of all files\nEnter '0' to Exit\n\nEnter your choice here:")
+    if userinput == '0':
+        break
+    print() #Just to leave a line, didn't use \n in next because it takes in folder path and might crash
+    folder_path = input(r"Enter folder path:")
+    if userinput == '1':
+        rename_files(folder_path)
+    elif userinput == '2':
+        add_space_before_capital_letters(folder_path)
+    elif userinput == '3':
+        add_space_before_character(folder_path, char)
